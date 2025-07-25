@@ -115,11 +115,6 @@
 			id: 2,
 			title: 'Challenge',
 			href: `/${scriptCurrent}/challenge`
-		},
-		{
-			id: 3,
-			title: 'Quiz',
-			href: `/${scriptCurrent}/quiz`
 		}
 	]);
 
@@ -265,7 +260,7 @@
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							onclick={() => (isProfileDropdown = false)}
 						>
-							Profil Saya
+							My Profile
 						</a>
 						<button
 							type="button"
