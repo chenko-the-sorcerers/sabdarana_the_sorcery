@@ -36,16 +36,6 @@ Throughout the development of Sabdarana and Widya Coin, we explored how to fuse 
 
 ---
 
-## 📦 Tech Stack
-
-| Frontend | Backend | Blockchain | AI/ML |
-|----------|---------|------------|-------|
-| Next.js  | Node.js | Solidity / Ethereum | Python (LLM & CV) |
-| TailwindCSS | Firebase | Web3.js / Ethers.js | Custom OCR for Aksara Jawa |
-| Figma (UI/UX) | Express | IPFS (NFT Storage) | HuggingFace Transformers |
-
----
-
 ## 💰 Widya Coin & Tokenomics
 
 Widya Coin is a reward token inspired by **Bitcoin halving mechanics**, tailored to educational milestones.  
