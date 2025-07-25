@@ -51,8 +51,12 @@
 		"@supabase/ssr": "^0.6.1",
 		"@supabase/supabase-js": "^2.51.0",
 		"@tailwindcss/typography": "^0.5.16",
+		"@wagmi/connectors": "^5.9.0",
+		"@wagmi/core": "^2.18.0",
 		"axios": "^1.9.0",
 		"firebase": "^11.8.1",
-		"gsap": "^3.13.0"
+		"gsap": "^3.13.0",
+		"svelte-wagmi": "^1.0.7",
+		"viem": "^2.33.0"
 	}
 }
