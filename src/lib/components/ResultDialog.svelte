@@ -7,7 +7,9 @@
 	export let show: boolean;
 	export let status: boolean;
 	export let text: string;
+	// svelte-ignore export_let_unused
 	export let isDesktop: boolean;
+	// svelte-ignore export_let_unused
 	export let labels: Array<{ label: string; value: string }>;
 	export let onNextCharacter: () => void;
 	export let onCloseDialog: () => void;

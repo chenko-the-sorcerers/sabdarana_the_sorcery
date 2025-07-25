@@ -293,9 +293,9 @@
 					/>
 					<label for="agreeToTerms" class="text-sm leading-relaxed text-gray-600">
 						I aggree
-						<a href="#" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Requirement</a>
+						<a href="/" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Requirement</a>
 						and
-						<a href="#" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Privacy</a>
+						<a href="/" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Privacy</a>
 					</label>
 				</div>
 
