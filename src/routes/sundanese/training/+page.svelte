@@ -9,7 +9,6 @@
 	import { screenSize } from '$lib/utils/mediaStore';
 	import { characterSundaneseLabels } from '$lib/constants/labels';
 	import { ApiSundaneseEndpoints } from '$lib/network/api-endpoints';
-	import HelpModal from '$lib/components/HelpModal.svelte';
 	import { drawStore } from '$lib/stores/drawStore';
 
 	let canvasRef: { getCanvasBlob: () => Promise<Blob> } | null = null;
@@ -147,7 +146,6 @@
 			onCloseDialog={handleCloseDialog}
 		/>
 	{/if}
-	<HelpModal show={showHelp} youtubeId="Z_9lJHCk6pw" onClose={onCloseHelp} />
 </div>
 
 <style>

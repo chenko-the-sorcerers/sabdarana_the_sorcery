@@ -7,7 +7,6 @@
 	import LoadingDialog from '$lib/components/LoadingDialog.svelte';
 	import { onMount } from 'svelte';
 	// import { requireLogin } from '$lib/auth/authGuard';
-	import HelpModal from '$lib/components/HelpModal.svelte';
 	import { ApiSundaneseEndpoints } from '$lib/network/api-endpoints';
 
 	let drawingCanvasRef: { getCanvasBlob: () => Promise<Blob> } | null = null;

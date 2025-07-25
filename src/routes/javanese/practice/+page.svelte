@@ -8,7 +8,6 @@
 	// import { onMount } from 'svelte';
 	// import { requireLogin } from '$lib/auth/authGuard';
 	import { ApiEndpoints } from '$lib/network/api-endpoints';
-	import HelpModal from '$lib/components/HelpModal.svelte';
 	import { javaneseLabels } from '$lib/models/labels';
 
 	let drawingCanvasRef: { getCanvasBlob: () => Promise<Blob> } | null = null;

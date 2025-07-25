@@ -10,7 +10,6 @@
 	import { characterLabels } from '$lib/constants/labels';
 	import { characterJavaneseLabels } from '$lib/utils/labels';
 	import { ApiEndpoints } from '$lib/network/api-endpoints';
-	import HelpModal from '$lib/components/HelpModal.svelte';
 
 	let canvasRef: { getCanvasBlob: () => Promise<Blob> } | null = null;
 	let showHelp = false;
@@ -141,7 +140,6 @@
 			onCloseDialog={handleCloseDialog}
 		/>
 	{/if}
-	<HelpModal show={showHelp} youtubeId="Z_9lJHCk6pw" onClose={onCloseHelp} />
 </div>
 
 <style>
