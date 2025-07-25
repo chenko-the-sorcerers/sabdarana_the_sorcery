@@ -9,17 +9,17 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Gantilah dengan domain yang spesifik jika perlu
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Izinkan semua metode HTTP
-    allow_headers=["*"],  # Izinkan semua header
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 html = f"""
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Arutala API</title>
+        <title>Sabdarana</title>
     </head>
     <body>
         <div class="bg-gray-200 p-4 rounded-lg shadow-lg">
@@ -33,9 +33,9 @@ html = f"""
 """
 
 # Base URLs untuk microservices
-TRANSLATE_JAVANESE_SCRIPT = "https://translate.arutalaaksara.com"
-SCAN_JAVANESE_SCRIPT = "https://arutala.taufiqdp.com"
-SCAN_SUNDANESE_SCRIPT = "https://api-sundanese.arutalaaksara.com"
+TRANSLATE_JAVANESE_SCRIPT = "http://localhost:8000"
+SCAN_JAVANESE_SCRIPT = "http://localhost:8001"
+SCAN_SUNDANESE_SCRIPT = "http://localhost:8002"
 
 @app.get("/")
 async def root():
