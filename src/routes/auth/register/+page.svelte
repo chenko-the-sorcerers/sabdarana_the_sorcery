@@ -52,7 +52,9 @@
 				errorMessage = '';
 				alert('Registrasi berhasil! Silakan cek email Anda untuk verifikasi.');
 				// Redirect to activation page or dashboard
-				goto('/auth/activation');
+				setTimeout(() => {
+					goto('/auth/login');
+				}, 5000);
 			} else {
 				errorMessage = result.error || 'Terjadi kesalahan saat mendaftar';
 			}
@@ -89,8 +91,8 @@
 		name="keywords"
 		content="daftar arutala Aksara, registrasi arutala Aksara, buat akun arutala Aksara, belajar aksara nusantara, platform pembelajaran aksara, kursus aksara online, aksara tradisional indonesia"
 	/>
-	<meta name="author" content="Arutala Aksara" />
-	<meta property="og:title" content="Daftar Akun Arutala Aksara - Mulai Belajar Aksara Nusantara" />
+	<meta name="author" content="Sabdanara" />
+	<meta property="og:title" content="Daftar Mulai Belajar Aksara Nusantara" />
 	<meta
 		property="og:description"
 		content="Bergabung dengan ribuan pelajar aksara Nusantara. Daftar gratis dan mulai perjalanan belajar aksara tradisional Indonesia."
@@ -138,7 +140,7 @@
 						d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
 					/>
 				</svg>
-				Masuk dengan Google
+				Login with Google
 			</button>
 
 			<!-- Divider -->
@@ -147,7 +149,7 @@
 					<div class="w-full border-t border-gray-300"></div>
 				</div>
 				<div class="relative flex justify-center text-sm">
-					<span class="bg-gray-50 px-4 text-gray-500">Atau</span>
+					<span class="bg-gray-50 px-4 text-gray-500">or</span>
 				</div>
 			</div>
 
@@ -303,7 +305,7 @@
 					disabled={!formData.agreeToTerms || loading}
 					class="w-full rounded-xl bg-[#b3f135] px-4 py-3 font-medium text-white transition-all duration-200 hover:cursor-pointer hover:bg-[#b2f135e9] focus:ring-4 focus:ring-blue-200 disabled:cursor-not-allowed disabled:opacity-50"
 				>
-					{loading ? 'Memproses...' : 'Daftar'}
+					{loading ? 'Loading...' : 'Register'}
 				</button>
 			</form>
 
@@ -311,7 +313,7 @@
 			<div class="mt-8 text-center">
 				<p class="text-gray-600">
 					Have account?
-					<a href="/auth/login" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Masuk</a>
+					<a href="/auth/login" class="font-medium text-[#b3f135] hover:text-[#b3f135]">Login</a>
 				</p>
 			</div>
 		</div>

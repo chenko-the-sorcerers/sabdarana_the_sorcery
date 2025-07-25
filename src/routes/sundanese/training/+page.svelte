@@ -95,7 +95,7 @@
 			<CharacterGrid
 				labels={characterSundaneseLabels.map(({ icon, value }) => ({ label: value, icon }))}
 				isDesktop={true}
-				script="aksara-jawa"
+				script="aksara-sunda"
 			/>
 
 			<div class="canvas-wrapper">
@@ -116,7 +116,7 @@
 				<CharacterGrid
 					labels={characterSundaneseLabels.map(({ icon, value }) => ({ label: value, icon }))}
 					isDesktop={false}
-					script="aksara-jawa"
+					script="aksara-sunda"
 				/>
 			</div>
 

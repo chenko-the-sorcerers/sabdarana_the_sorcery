@@ -7,6 +7,11 @@
 	import { scriptStore } from '$lib/stores/scriptStore';
 	import { supabase } from '$lib/supabase/client';
 	import type { LayoutData } from './$types';
+	import { defaultConfig } from 'svelte-wagmi';
+	import { injected } from '@wagmi/connectors';
+	import { PUBLIC_ALCHEMY_ID, PUBLIC_WALLETCONNECT_ID } from '$env/static/public';
+
+	let erckit;
 
 	let { children, data }: { children: any; data: LayoutData } = $props();
 
@@ -17,6 +22,16 @@
 		if (supportedScripts.includes(scriptCandidate)) {
 			scriptStore.set(scriptCandidate);
 		}
+	});
+
+	onMount(async () => {
+		erckit = defaultConfig({
+			appName: 'ScriptCoin',
+			alchemyId: PUBLIC_ALCHEMY_ID,
+			walletConnectProjectId: PUBLIC_WALLETCONNECT_ID,
+			connectors: [injected()]
+		});
+		await erckit.init();
 	});
 
 	onMount(() => {

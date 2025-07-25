@@ -1,15 +1,57 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { user } from '$lib/supabase/authStore';
 	import { signOut } from '$lib/supabase/auth';
-	import { goto } from '$app/navigation';
+	import { supabase } from '$lib/supabase/client';
+	import { signerAddress, connected } from 'svelte-wagmi';
+	import ConnectWallet from '$lib/components/ConnectWallet.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	let currentUser = $state<any>(null);
 
+	onMount(async () => {
+		const { data, error } = await supabase.rpc('get_user_wdc_info', {
+			p_wallet: $signerAddress
+		});
+		console.log(data);
+	});
+
+	// Local state
+	let currentUser = $state<any>(null);
+	let wdcBalance = $state<number>(0);
+	let miningHistory = $state<{ id: string; mined_at: string; tx_hash: string }[]>([]);
+
+	// Sync auth user
 	$effect(() => {
 		currentUser = $user;
+	});
+
+	// Fetch WDC balance & mining history when wallet is connected
+	$effect(() => {
+		if ($signerAddress) {
+			const fetchWdc = async () => {
+				const { data, error } = await supabase.rpc('get_user_wdc_info', {
+					p_wallet: $signerAddress
+				});
+
+				if (error) {
+					console.error('[WDC Fetch Error]', error);
+					return;
+				}
+
+				if (data && data.length > 0) {
+					wdcBalance = data[0].balance;
+					miningHistory = data.map((row: any) => ({
+						id: row.mining_id,
+						mined_at: row.mined_at,
+						tx_hash: row.tx_hash
+					}));
+				}
+			};
+
+			fetchWdc();
+		}
 	});
 
 	async function handleLogout() {
@@ -54,6 +96,23 @@
 								</h2>
 								<p class="text-gray-300">{currentUser.email}</p>
 							</div>
+						</div>
+
+						<!-- Web3 -->
+						<!-- Web3 Info -->
+						<div class="border-t border-gray-600 pt-6">
+							<h2 class="mb-4 text-lg font-semibold text-white">Web3 Wallet</h2>
+							{#if $connected}
+								<p class="text-sm text-gray-400">Wallet Address</p>
+								<p class="font-mono text-sm break-all text-[#b3f135]">{$signerAddress}</p>
+								<p class="mt-2 text-sm text-gray-400">WDC Balance</p>
+								<p class="text-lg font-bold text-white">{wdcBalance} WDC</p>
+								<div class="mt-4">
+									<ConnectWallet />
+								</div>
+							{:else}
+								<ConnectWallet />
+							{/if}
 						</div>
 
 						<!-- User Info -->
@@ -122,4 +181,38 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div
+	class="mx-auto mt-10 rounded-xl bg-white/10 p-6 shadow-lg ring-1 ring-white/20 backdrop-blur-md md:w-[90%]"
+>
+	<h2 class="mb-4 text-lg font-semibold text-white">Recent Mining Activity</h2>
+
+	{#if miningHistory.length > 0}
+		<ul class="space-y-4 divide-y divide-white/10">
+			{#each miningHistory as entry}
+				<li class="pt-2">
+					<div class="flex flex-col gap-1">
+						<div class="text-sm text-white">
+							⛏️ Mined at:
+							<span class="ml-1 text-gray-300">
+								{new Date(entry.mined_at).toLocaleString('id-ID', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+									hour: '2-digit',
+									minute: '2-digit'
+								})}
+							</span>
+						</div>
+						<div class="font-mono text-xs break-all text-green-400">
+							Tx Hash: {entry.tx_hash}
+						</div>
+					</div>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<p class="text-sm text-gray-300">No mining activity this month.</p>
+	{/if}
 </div>

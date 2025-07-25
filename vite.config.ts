@@ -11,7 +11,8 @@ export default defineConfig({
 		cors: {
 			origin: true,
 			credentials: true
-		}
+		},
+		allowedHosts: ['ca01aae42466.ngrok-free.app']
 	},
 	preview: {
 		cors: {

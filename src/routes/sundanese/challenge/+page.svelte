@@ -6,7 +6,6 @@
 	import { characterSundaneseLabels } from '$lib/constants/labels';
 	import LoadingDialog from '$lib/components/LoadingDialog.svelte';
 	import { onMount } from 'svelte';
-	// import { requireLogin } from '$lib/auth/authGuard';
 	import { ApiSundaneseEndpoints } from '$lib/network/api-endpoints';
 
 	let drawingCanvasRef: { getCanvasBlob: () => Promise<Blob> } | null = null;
